@@ -1,0 +1,27 @@
+stages:
+  - build
+  - deploy
+
+build test-frontend:
+  stage: build
+  only:
+    refs:
+      - main
+  tags:
+    - main
+
+  script:
+    - npm install
+    - npm run build
+
+
+deploy test-frontend:  
+  stage: deploy
+  only:
+    refs:
+      - main
+  tags:
+    - main
+  script:
+    - docker build -t test-frontend .  
+    - docker run -p 8080:8080 test-frontend
