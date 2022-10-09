@@ -11,8 +11,7 @@ build test-frontend:
     - main
 
   script:
-    - npm install
-    - npm run build
+    - docker build -t test-frontend .
 
 
 deploy test-frontend:  
@@ -23,5 +22,6 @@ deploy test-frontend:
   tags:
     - main
   script:
-    - docker build -t test-frontend .  
-    - docker run -p 8080:8080 test-frontend
+    -  cd /home/ubuntu/opt/frontend
+    - docker-compose down
+    - docker-compose up -d
