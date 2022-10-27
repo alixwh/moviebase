@@ -28,5 +28,8 @@ module.exports = {
   ],
   rules: {
     'no-unused-vars': 'warn',
+    'vue/no-unused-vars': ['warn'],
+    'vue/multi-word-component-names': 'off',
+    'vue/html-quotes': ['warn', 'single', { avoidEscape: true }],
   },
 };
