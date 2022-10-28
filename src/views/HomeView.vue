@@ -25,7 +25,7 @@ import { onMounted, ref } from 'vue';
 const movies = ref([]);
 const getMovies = async () => {
   try {
-    const response = await httpClient.get('/movies');
+    const response = await httpClient.get('/api/movies');
     movies.value = response.data;
   } catch (e) {
     console.log(e);
