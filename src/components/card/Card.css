@@ -1,0 +1,29 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 8px;
+    align-items: flex-start;
+    max-width: 200px;
+    gap: 8px;
+}
+
+.genres {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    gap: 4px;
+}
+.genres li {
+    padding: 4px;
+    border: 2px solid  red;
+    border-radius: 8px;
+}
+
+.genres li:hover {
+    cursor: pointer;
+    background-color: aqua;
+}
+

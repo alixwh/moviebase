@@ -27,6 +27,9 @@ module.exports = {
     'vue',
   ],
   rules: {
+    'linebreak-style': 0,
     'no-unused-vars': 'warn',
+    'vue/no-unused-vars': ['warn'],
+    'vue/multi-word-component-names': 'off',
   },
 };
