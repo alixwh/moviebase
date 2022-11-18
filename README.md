@@ -13,10 +13,7 @@ git clone https://gitlab.cs.ttu.ee/hahinn/iti0302-2022-webproject-frontend.git
 ```
 npm install -g @vue/cli -> npm install
 ```
-### Compile docker image
-```
-docker build -t ${tag_name} .
-```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
@@ -30,6 +27,16 @@ npm run build
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### Compile docker image
+```
+docker build -t ${tag_name} .
+```
+##Server
+In the directory where the docker-compose.yml is run the command
+```
+docker-compose up
 ```
 
 ### Customize configuration
