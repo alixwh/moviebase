@@ -13,6 +13,18 @@
           </li>
           <li class="menu-list-item">
             Genres
+            <div class="sub-menu-list">
+              <ul>
+                <li
+                  v-for="genre in genres"
+                  :key="genre"
+                >
+                  <router-link :to="`/genre/${genre.id}`">
+                    {{ genre.name }}
+                  </router-link>
+                </li>
+              </ul>
+            </div>
           </li>
           <router-link
             to="/about"
@@ -40,5 +52,21 @@
   </div>
   <router-view />
 </template>
+
+<script setup>
+import httpClient from '@/httpClient';
+import { onMounted, ref } from 'vue';
+
+const genres = ref([]);
+const getGenres = async () => {
+  try {
+    const response = await httpClient.get('/api/genres');
+    genres.value = response.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+onMounted(() => getGenres());
+</script>
 
 <style src="./App.css" scoped />
