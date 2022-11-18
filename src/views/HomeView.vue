@@ -1,6 +1,10 @@
 <template>
   <div class="home">
     <div class="discover-container">
+      <img
+        class="discover-img"
+        src="../assets/movie_collage.jpg"
+      >
       <div class="search-container">
         <form
           action="/search"

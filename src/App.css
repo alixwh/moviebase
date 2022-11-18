@@ -99,21 +99,7 @@
   transition: 0.25s ease all;
 }
 
-.navbar-container.active {
-  background-color: #2b9f5f;
-  color: black;
-}
-
-.logo-container.active {
-  color: black;
-}
-
-.toggle.active {
-  background-color: black;
-}
-
 .toggle-ball.active {
-  background-color: white;
   transform: translateX(-20px);
 }
 

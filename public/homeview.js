@@ -1,6 +1,6 @@
 const ball = document.querySelector('.toggle');
 const items = document.querySelectorAll(
-  'body,#app,.navbar-container,.logo-container,.home,.discover-container,.toggle-ball',
+  'body,#app,.home,.discover-container,.toggle-ball',
 );
 
 ball.addEventListener('click', () => {
