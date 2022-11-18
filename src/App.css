@@ -98,7 +98,7 @@
   margin: 0 20px;
 }
 
-.profile-container>:hover {
+.profile-container:hover {
   color: #2b9f5f;
 }
 

@@ -31,10 +31,7 @@
     </div>
     <div class="content-container">
       <div class="movie-list-container">
-        <h1
-          id="fgh"
-          class="movie-list-title"
-        >
+        <h1 class="movie-list-title">
           Popular
         </h1>
         <div class="movie-list-wrapper">
