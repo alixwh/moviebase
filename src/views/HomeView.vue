@@ -1,17 +1,58 @@
 <template>
-  <div class='home'>
-    <div v-if='!movies.length'>
-      loading
-    </div>
-    <div v-else>
-      <ul>
-        <li
-          v-for='movie in movies'
-          :key='movie.title'
+  <div class="home">
+    <div class="discover-container">
+      <img
+        class="discover-img"
+        src="../assets/movie_collage.jpg"
+      >
+      <div class="search-container">
+        <form
+          action="/search"
+          method="get"
+          class="search-bar"
         >
-          <Card :movie='movie' />
-        </li>
-      </ul>
+          <input
+            type="text"
+            placeholder="Search"
+            name="query"
+          >
+          <button type="submit">
+            <font-awesome-icon
+              icon="fa-solid fa-magnifying-glass"
+              class="magnifying-glass"
+            />
+          </button>
+        </form>
+      </div>
+      <div class="quiz-container">
+        <h1>Don't know what to watch?</h1>
+        <h2>Answer questions and we will find you something you'll like.</h2>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="movie-list-container">
+        <h1
+          id="fgh"
+          class="movie-list-title"
+        >
+          Popular
+        </h1>
+        <div class="movie-list-wrapper">
+          <ul>
+            <li
+              v-for="movie in movies"
+              :key="movie.title"
+            >
+              <Card :movie="movie" />
+            </li>
+          </ul>
+          <font-awesome-icon
+            icon="fa-solid fa-chevron-right"
+            class="arrow"
+            name="arrow"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -34,15 +75,4 @@ const getMovies = async () => {
 onMounted(() => getMovies());
 </script>
 
-<style scoped>
-ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 16px;
-}
-
-li {
-  padding: 8px;
-}
-</style>
+<style src="./HomeView.css" scoped />
