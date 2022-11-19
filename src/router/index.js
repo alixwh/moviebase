@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/AboutView.vue';
+import GenreView from '../views/GenreView.vue';
 
 const routes = [
   {
@@ -19,7 +19,7 @@ const routes = [
   {
     path: '/genre/:id',
     name: 'genre',
-    component: AboutView,
+    component: GenreView,
   },
 ];
 
