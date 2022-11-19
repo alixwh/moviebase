@@ -54,6 +54,7 @@ onMounted(() => getMovies());
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(247px, 1fr));
+  row-gap: 20px;
   margin-top: 40px;
   padding: 0 20px;
   transform: translateX(0);
