@@ -1,5 +1,5 @@
 <template>
-    <div class="movie">
+    <div class="main-movie-container">
       <img
         class="movie-list-item-img"
         name="movie-list-item-img"
@@ -16,10 +16,15 @@
             {{ genre }}
           </li>
         </ul>
+        <font-awesome-icon
+        class="star-icon"
+        icon="fa-solid fa-star"
+        />
+        <span>{{ movie.voteAverage }} / 10</span>
         <h3>Overview</h3>
         <p class="movie-list-item-overview">{{ movie.overview }}</p>
         <h3>Director</h3>
-        <ul class="directors">
+        <ul class="directors-list">
           <li
             v-for="director in movie.directorsList"
             :key="director.name"
@@ -29,9 +34,22 @@
         </ul>
       </div>
   </div>
+  <div class="actors-container">
+    <h2>Top cast</h2>
+    <ul class="actors-list">
+          <li
+            v-for="actorId in movie.actorsList"
+            :key="actorId"
+            class="actors-list-item"
+          >
+            <ActorCard :actorId="actorId" />
+          </li>
+        </ul>
+  </div>
 </template>
 
 <script setup>
+import ActorCard from '@/components/ActorCard.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import httpClient from '@/httpClient';
@@ -50,10 +68,11 @@ onMounted(() => getMovie());
 </script>
 
 <style>
-.movie {
+.main-movie-container {
   min-height: 40vh;
   margin: 8vh 10vh;
   display: flex;
+  align-items: center;
 }
 
 .movie-list-item-img {
@@ -63,7 +82,6 @@ onMounted(() => getMovie());
 }
 
 .movie-info {
-  margin-top: 50px;
   margin-left: 50px;
 }
 
@@ -78,19 +96,32 @@ onMounted(() => getMovie());
     text-decoration: underline;
 }
 
-.directors {
+.directors-list {
   list-style: none;
   padding: 0;
 }
 
-.circular-progress{
-    position: relative;
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-    background: conic-gradient(#7d2ae8 3.6deg, #ededed 0deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.star-icon {
+  padding-right: 10px;
+}
+
+.actors-container {
+  min-height: 40vh;
+  margin: 8vh 10vh;
+  align-items: center;
+}
+
+.actors-list {
+  list-style: none;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(247px, 1fr));
+  row-gap: 20px;
+
+}
+
+.actors-list-item {
+  margin-bottom: 30px;
+  margin-right: 30px;
 }
 </style>
