@@ -23,7 +23,20 @@
         </ul>
       </div>
       <div class="profile-container">
-        <span class="profile-text">Login</span>
+        <div
+          v-if="user.token"
+          class="profile-text"
+          @click="logout"
+        >
+          Logout
+        </div>
+        <router-link
+          v-else
+          to="/login"
+          class="profile-text"
+        >
+          Login
+        </router-link>
         <div class="toggle">
           <font-awesome-icon
             icon="fa-solid fa-moon"
@@ -40,5 +53,13 @@
   </div>
   <router-view />
 </template>
+
+<script setup>
+import useUser from '@/services/useUser';
+import useAuthStore from './stores/auth';
+
+const user = useAuthStore();
+const { logout } = useUser();
+</script>
 
 <style src="./App.css" scoped />
