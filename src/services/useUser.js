@@ -11,7 +11,6 @@ const useUser = () => {
       username,
       password,
     };
-
     httpClient.post('api/public/login', request)
       .then((response) => {
         if (!response.data.token) return;
@@ -19,8 +18,17 @@ const useUser = () => {
         router.push('/');
         // TODO lisada axioses tulevikus authorization: bearer response.token
         // axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
-        // vaja veel lisada et localstorageis hoiaks, ehk kui refreshid ei kaoks ara
-        // localStorage.setItem('token', JSON.stringify(response.data.token));
+      }).catch((error) => console.log('login', error));
+  };
+  const register = (username, password) => {
+    const request = {
+      username,
+      password,
+    };
+    httpClient.post('api/public/register', request)
+      .then((response) => {
+        if (response.data.reason !== 'register successful');
+        login(username, password);
       }).catch((error) => console.log('login', error));
   };
   const logout = () => {
@@ -30,6 +38,7 @@ const useUser = () => {
   return {
     login,
     logout,
+    register,
   };
 };
 
