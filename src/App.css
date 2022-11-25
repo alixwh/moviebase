@@ -8,8 +8,8 @@
 }
 
 #app.active {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
 .navbar {
@@ -26,11 +26,6 @@
   color: white;
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: inherit;
 }
 
 .logo-container {
@@ -57,6 +52,36 @@
   color: #2b9f5f;
 }
 
+.sub-menu-list {
+  display: none;
+}
+
+.menu-list li:hover .sub-menu-list {
+  display: flex;
+  position: absolute;
+  background-color: black;
+  color: white;
+  margin-left: -25px;
+  z-index: 1;
+}
+
+.menu-list li:hover .sub-menu-list ul{
+  columns: 5;
+  column-gap: 25px;
+  list-style: none;
+}
+
+.menu-list li:hover .sub-menu-list ul li{
+  text-align: left;
+  margin-left: -40px;
+  padding: 25px;
+  height: 20px;
+}
+
+.menu-list li:hover .sub-menu-list ul li:hover{
+  color: #2b9f5f;
+}
+
 .profile-container {
   flex: 2;
   display: flex;
@@ -68,7 +93,7 @@
   margin: 0 20px;
 }
 
-.profile-container>:hover {
+.profile-container:hover {
   color: #2b9f5f;
 }
 

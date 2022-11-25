@@ -1,9 +1,7 @@
-
 ul {
   list-style: none;
   display: flex;
   padding: 0 20px;
-  height: 400px;
   transform: translateX(0);
   transition: 1s ease-in-out;
 }
@@ -13,12 +11,9 @@ li {
   position: relative;
 }
 
-.home {
-  color: white;
-}
-
 .discover-container{
   background-color: black;
+  color: white;
   position: relative;
   width: 100%;
   height: auto;
@@ -88,7 +83,6 @@ li {
 }
 
 .movie-list-title {
-  display:flex;
   margin-left: 30px;
   margin-bottom: 0;
 }
@@ -106,10 +100,6 @@ li {
   color: lightgray;
   opacity: 0.5;
   cursor: pointer;
-}
-
-.home.active {
-  color: black;
 }
 
 .discover-container.active {

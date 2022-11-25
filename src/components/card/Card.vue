@@ -8,7 +8,6 @@
     <span class="movie-list-item-title">{{ props.movie.title }}</span>
     <span>{{ props.movie.releaseDate }}</span>
     <span class="movie-list-item-overview">{{ props.movie.overview }}</span>
-    <span v-if="props.movie.genresList.length">Genres:</span>
     <ul
       v-if="props.movie.genresList.length"
       class="genres"
