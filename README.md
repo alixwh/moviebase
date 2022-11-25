@@ -13,6 +13,9 @@ git clone https://gitlab.cs.ttu.ee/hahinn/iti0302-2022-webproject-frontend.git
 ```
 npm install -g @vue/cli -> npm install
 ```
+```
+npm install pinia
+```
 
 ### Compiles and hot-reloads for development
 ```
