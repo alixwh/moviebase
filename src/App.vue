@@ -35,7 +35,7 @@
           to="/login"
           class="profile-text"
         >
-          Login/register
+          Login
         </router-link>
         <div class="toggle">
           <font-awesome-icon
