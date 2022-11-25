@@ -5,6 +5,7 @@ import {
 import AboutView from '@/views/AboutView.vue';
 import HomeView from '../views/HomeView.vue';
 import GenreView from '../views/GenreView.vue';
+import MovieView from '../views/MovieView.vue';
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     path: '/genre/:id',
     name: 'genre',
     component: GenreView,
+  },
+  {
+    path: '/movie/:id',
+    name: 'movie',
+    component: MovieView,
   },
   {
     path: '/account',

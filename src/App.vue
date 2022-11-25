@@ -78,7 +78,7 @@ const { logout } = useUser();
 const genres = ref([]);
 const getGenres = async () => {
   try {
-    const response = await httpClient.get('/api/genres');
+    const response = await httpClient.get('/api/public/genres');
     genres.value = response.data;
   } catch (e) {
     console.log(e);
