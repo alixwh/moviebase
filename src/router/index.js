@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import {
   Layout, Login, Register,
 } from '@/views/account';
+import AboutView from '@/views/AboutView.vue';
 import HomeView from '../views/HomeView.vue';
 import GenreView from '../views/GenreView.vue';
 

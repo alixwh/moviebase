@@ -67,10 +67,10 @@
 </template>
 
 <script setup>
-import useUser from '@/services/useUser';
-import useAuthStore from './stores/auth';
 import httpClient from '@/httpClient';
 import { onMounted, ref } from 'vue';
+import useUser from '@/services/useUser';
+import useAuthStore from './stores/auth';
 
 const user = useAuthStore();
 const { logout } = useUser();
