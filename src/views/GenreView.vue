@@ -16,7 +16,7 @@
 </template>
 <script setup>
 import Card from '@/components/card/Card.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import httpClient from '@/httpClient';
 
@@ -30,19 +30,25 @@ const getGenreName = async () => {
     console.log(e);
   }
 };
-onMounted(() => getGenreName());
 
-const url = `http://localhost:8081/api/genre/${route.params.id}`;
 const movies = ref([]);
 const getMovies = async () => {
   try {
-    const response = await httpClient.get(url);
+    const response = await httpClient.get(`http://localhost:8081/api/genre/${route.params.id}`);
     movies.value = response.data;
   } catch (e) {
     console.log(e);
   }
 };
-onMounted(() => getMovies());
+onMounted(() => {
+  getGenreName();
+  getMovies();
+});
+
+watch(() => route.params.id, () => {
+  getGenreName();
+  getMovies();
+});
 </script>
 
 <style>
