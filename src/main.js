@@ -11,9 +11,13 @@ import {
   faMoon, faSun, faChevronRight, faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
 
+import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
-/* add icons to the library */
-library.add(faMoon, faSun, faChevronRight, faMagnifyingGlass);
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app');
+library.add(faMoon, faSun, faChevronRight, faMagnifyingGlass);
+const pinia = createPinia();
+/* add icons to the library */
+
+createApp(App).component('FontAwesomeIcon', FontAwesomeIcon).use(pinia).use(router)
+  .mount('#app');
