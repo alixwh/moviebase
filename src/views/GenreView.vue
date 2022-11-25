@@ -24,7 +24,7 @@ const route = useRoute();
 const genreName = ref();
 const getGenreName = async () => {
   try {
-    const response = await httpClient.get(` http://localhost:8081/api/genres/${route.params.id}`);
+    const response = await httpClient.get(`/api/public/genres/${route.params.id}`);
     genreName.value = response.data.name;
   } catch (e) {
     console.log(e);
@@ -34,7 +34,7 @@ const getGenreName = async () => {
 const movies = ref([]);
 const getMovies = async () => {
   try {
-    const response = await httpClient.get(`http://localhost:8081/api/genre/${route.params.id}`);
+    const response = await httpClient.get(`/api/public/genre/${route.params.id}`);
     movies.value = response.data;
   } catch (e) {
     console.log(e);
