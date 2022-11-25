@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     padding: 8px;
-    align-items: center;
+    align-items:flex-start;
     max-width: 200px;
     gap: 8px;
 }
@@ -10,20 +10,15 @@
 .genres {
     list-style: none;
     padding: 0;
-    width: 100%;
+    width: 200px;
     display: flex;
+    flex-wrap: wrap;
     gap: 4px;
 }
 
 .genres li {
     padding: 4px;
-    border: 2px solid  red;
-    border-radius: 8px;
-}
-
-.genres li:hover {
-    cursor: pointer;
-    background-color: aqua;
+    text-decoration: underline;
 }
 
 .movie-list-item-img {
@@ -32,6 +27,7 @@
     height: 270px;
     object-fit: cover;
     border-radius: 15px;
+    align-self: center;
 }
 
 .card:hover .movie-list-item-img {
@@ -54,6 +50,7 @@
     top: 10%;
     opacity: 0;
     transition: 1s all ease-in-out;
+    align-self: center;
 }
 
 .card:hover .movie-list-item-overview {
