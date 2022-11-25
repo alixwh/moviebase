@@ -29,7 +29,7 @@ const useUser = () => {
       .then((response) => {
         if (response.data.reason !== 'register successful');
         login(username, password);
-      }).catch((error) => console.log('login', error));
+      }).catch((error) => console.log('regsiter', error));
   };
   const logout = () => {
     userStore.clearCredentials();

@@ -30,20 +30,13 @@
         >
           Logout
         </div>
-        <template v-else>
-          <router-link
-            to="/login"
-            class="profile-text"
-          >
-            Login
-          </router-link>
-          <router-link
-            to="/register"
-            class="profile-text"
-          >
-            Register
-          </router-link>
-        </template>
+        <router-link
+          v-else
+          to="/login"
+          class="profile-text"
+        >
+          Login/register
+        </router-link>
         <div class="toggle">
           <font-awesome-icon
             icon="fa-solid fa-moon"

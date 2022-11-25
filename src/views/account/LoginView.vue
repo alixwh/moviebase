@@ -2,6 +2,12 @@
   <div class="form">
     <div class="title">
       Login
+      <router-link
+        to="/register"
+        class="title"
+      >
+        | Register
+      </router-link>
     </div>
     <div class="input-container ic1">
       <input
@@ -34,7 +40,7 @@
       class="submit"
       @click="handleLogin"
     >
-      submit
+      Login
     </button>
   </div>
 </template>

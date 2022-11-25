@@ -1,6 +1,12 @@
 <template>
   <div class="form">
     <div class="title">
+      <router-link
+        to="/login"
+        class="title"
+      >
+        Login |
+      </router-link>
       Register
     </div>
     <div class="input-container ic1">
