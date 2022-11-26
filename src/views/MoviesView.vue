@@ -48,7 +48,10 @@
         </div>
       </li>
       <li class="filter">
-        <button class="filter-btn">
+        <button
+          class="filter-btn"
+          @click="handleFilter"
+        >
           Filter
         </button>
       </li>
@@ -95,6 +98,24 @@ const getMovies = async () => {
     movies.value = response.data;
   } catch (e) {
     // console.log(e);
+  }
+};
+const handleFilter = async () => {
+  if (checkedGenres.value.length !== 0) {
+    const response = await httpClient.get(`/api/public/movies/genres/${checkedGenres.value.join()}`);
+    movies.value = null;
+    movies.value = response.data;
+  } else if (checkedYears.value.length !== 0) {
+    const response = await httpClient.get(`/api/public/movies/years/${checkedYears.value.join()}`);
+    movies.value = null;
+    movies.value = response.data;
+  } else {
+    getMovies();
+  }
+  if (checkedGenres.value.length !== 0 && checkedYears.value.length !== 0) {
+    const response = await httpClient.get(`/api/public/movies/years/${checkedYears.value.join()}/genres${checkedGenres.value.join()}`);
+    movies.value = null;
+    movies.value = response.data;
   }
 };
 onMounted(() => {

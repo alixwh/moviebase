@@ -86,7 +86,7 @@ const getGenres = async () => {
     const response = await httpClient.get('/api/public/genres');
     genres.value = response.data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 onMounted(() => getGenres());

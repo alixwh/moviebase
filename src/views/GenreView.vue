@@ -27,7 +27,7 @@ const getGenreName = async () => {
     const response = await httpClient.get(`/api/public/genres/${route.params.id}`);
     genreName.value = response.data.name;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 
@@ -37,7 +37,7 @@ const getMovies = async () => {
     const response = await httpClient.get(`/api/public/genre/${route.params.id}`);
     movies.value = response.data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 onMounted(() => {
