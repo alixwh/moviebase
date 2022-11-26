@@ -34,7 +34,7 @@ const getGenreName = async () => {
 const movies = ref([]);
 const getMovies = async () => {
   try {
-    const response = await httpClient.get(`/api/public/genre/${route.params.id}`);
+    const response = await httpClient.get(`/api/public/movies/genre/${route.params.id}`);
     movies.value = response.data;
   } catch (e) {
     console.log(e);
