@@ -1,0 +1,53 @@
+.filters {
+    display: flex;
+    list-style: none;
+    margin-top: 60px;
+    margin-left: 30px;
+  }
+  .filter {
+    width: fit-content;
+    margin: 5px;
+  }
+  .dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+  }
+  .filter-btn {
+    background-color: blue;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+  }
+  .grid-container {
+    display: none;
+    position: absolute;
+    grid-template-columns: auto auto auto auto auto;
+    width: max-content;
+    background-color: black;
+    color: white;
+    z-index: 1;
+  }
+  .grid-item {
+    padding: 20px;
+    appearance: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600
+  }
+  .grid-item :hover {
+    color: #2b9f5f;
+  }
+  input[type="checkbox"]  {
+    display: none;
+  }
+  input:checked + label {
+    color: #2b9f5f;
+  }
+  .filter:hover .grid-container {
+    display: grid;
+  }
