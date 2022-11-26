@@ -8,14 +8,12 @@
       </div>
       <div class="menu-container">
         <ul class="menu-list">
-          <li class="menu-list-item">
-            <router-link
-              to="/movies"
-              class="menu-list-item"
-            >
-              Movies
-            </router-link>
-          </li>
+          <router-link
+            to="/movies"
+            class="menu-list-item"
+          >
+            Movies
+          </router-link>
           <li class="menu-list-item">
             Genres
             <div class="sub-menu-list">

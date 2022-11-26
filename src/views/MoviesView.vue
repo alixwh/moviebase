@@ -101,7 +101,12 @@ const getMovies = async () => {
   }
 };
 const handleFilter = async () => {
-  if (checkedGenres.value.length !== 0) {
+  if (checkedGenres.value.length !== 0 && checkedYears.value.length !== 0) {
+    // http://localhost:8080/api/public/filter?genre=16&year=2021
+    const response = await httpClient.get(`/api/public/filter?genre=${checkedGenres.value.join()}&year=${checkedYears.value.join()}`);
+    movies.value = null;
+    movies.value = response.data;
+  } else if (checkedGenres.value.length !== 0) {
     const response = await httpClient.get(`/api/public/movies/genres/${checkedGenres.value.join()}`);
     movies.value = null;
     movies.value = response.data;
@@ -112,11 +117,6 @@ const handleFilter = async () => {
   } else {
     getMovies();
   }
-  if (checkedGenres.value.length !== 0 && checkedYears.value.length !== 0) {
-    const response = await httpClient.get(`/api/public/movies/years/${checkedYears.value.join()}/genres${checkedGenres.value.join()}`);
-    movies.value = null;
-    movies.value = response.data;
-  }
 };
 onMounted(() => {
   getMovies();
@@ -124,4 +124,4 @@ onMounted(() => {
 });
 
 </script>
-<style src="./MoviesView.css" scoped />
+  <style src="./MoviesView.css" scoped />
