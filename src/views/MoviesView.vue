@@ -3,7 +3,7 @@
     <div class="filters">
       <li class="filter">
         <button class="dropbtn">
-          Genre: {{ checkedGenres }}
+          Genre
         </button>
         <div class="grid-container">
           <div
@@ -26,7 +26,7 @@
       </li>
       <li class="filter">
         <button class="dropbtn">
-          Year: {{ checkedYears }}
+          Year
         </button>
         <div class="grid-container">
           <div
@@ -38,12 +38,35 @@
               :id="year"
               v-model="checkedYears"
               type="checkbox"
-              :value="year + 1993"
+              :value="2023 - year"
             >
             <label
               :for="year"
             >
-              {{ year + 1993 }}</label>
+              {{ 2023 - year }}</label>
+          </div>
+        </div>
+      </li>
+      <li class="filter">
+        <button class="dropbtn">
+          Sort by: {{ sortingChoice }}
+        </button>
+        <div class="grid-container">
+          <div
+            v-for="sort in sortingOptions"
+            :key="sort"
+            class="grid-item"
+          >
+            <input
+              :id="sort"
+              v-model="sortingChoice"
+              type="radio"
+              :value="sort"
+            >
+            <label
+              :for="sort"
+            >
+              {{ sort }}</label>
           </div>
         </div>
       </li>
@@ -54,9 +77,6 @@
         >
           Filter
         </button>
-      </li>
-      <li class="filter">
-        Sort by
       </li>
     </div>
   </div>
@@ -87,9 +107,6 @@ const getGenres = async () => {
     // console.log(e);
   }
 };
-const checkedGenres = ref([]);
-
-const checkedYears = ref([]);
 
 const movies = ref([]);
 const getMovies = async () => {
@@ -100,19 +117,16 @@ const getMovies = async () => {
     // console.log(e);
   }
 };
+
+const checkedGenres = ref([]);
+const checkedYears = ref([]);
+const sortingOptions = ['default', 'name', 'rating', 'release date'];
+const sortingChoice = ref('default');
+
 const handleFilter = async () => {
-  if (checkedGenres.value.length !== 0 && checkedYears.value.length !== 0) {
-    // http://localhost:8080/api/public/filter?genre=16&year=2021
+  movies.value = null;
+  if (checkedGenres.value.length !== 0 || checkedYears.value.length !== 0) {
     const response = await httpClient.get(`/api/public/filter?genre=${checkedGenres.value.join()}&year=${checkedYears.value.join()}`);
-    movies.value = null;
-    movies.value = response.data;
-  } else if (checkedGenres.value.length !== 0) {
-    const response = await httpClient.get(`/api/public/movies/genres/${checkedGenres.value.join()}`);
-    movies.value = null;
-    movies.value = response.data;
-  } else if (checkedYears.value.length !== 0) {
-    const response = await httpClient.get(`/api/public/movies/years/${checkedYears.value.join()}`);
-    movies.value = null;
     movies.value = response.data;
   } else {
     getMovies();

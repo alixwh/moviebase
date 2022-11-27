@@ -7,7 +7,7 @@
       >
       <div class="search-container">
         <form
-          action="/search"
+          action="api/public/search"
           method="get"
           class="search-bar"
         >
