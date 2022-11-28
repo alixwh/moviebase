@@ -8,9 +8,12 @@
       </div>
       <div class="menu-container">
         <ul class="menu-list">
-          <li class="menu-list-item">
+          <router-link
+            to="/movies"
+            class="menu-list-item"
+          >
             Movies
-          </li>
+          </router-link>
           <li class="menu-list-item">
             Genres
             <div class="sub-menu-list">
@@ -81,7 +84,7 @@ const getGenres = async () => {
     const response = await httpClient.get('/api/public/genres');
     genres.value = response.data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 onMounted(() => getGenres());
