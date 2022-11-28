@@ -3,7 +3,9 @@
     <div class="filters">
       <li class="filter">
         <button class="dropbtn">
-          Genre
+          Genre: {{ checkedGenres.length === 0 ?
+            'All' : checkedGenres.length === 1 ? checkedGenres[0].name :
+              checkedGenres.length + ' selected' }}
         </button>
         <div class="grid-container">
           <div
@@ -15,7 +17,7 @@
               :id="genre.name"
               v-model="checkedGenres"
               type="checkbox"
-              :value="genre.id"
+              :value="genre"
             >
             <label
               :for="genre.name"
@@ -26,7 +28,9 @@
       </li>
       <li class="filter">
         <button class="dropbtn">
-          Year
+          Year {{ checkedYears.length === 0 ?
+            'All' : checkedYears.length === 1 ? checkedYears[0] :
+              checkedYears.length + ' selected' }}
         </button>
         <div class="grid-container">
           <div
@@ -120,13 +124,14 @@ const getMovies = async () => {
 
 const checkedGenres = ref([]);
 const checkedYears = ref([]);
-const sortingOptions = ['default', 'name', 'rating', 'release date'];
+const sortingOptions = ['default', 'title', 'voteAverage', 'releaseDate']; // not working yet
 const sortingChoice = ref('default');
 
+const getGenreIds = () => (checkedGenres.value.map((genre) => genre.id).join());
 const handleFilter = async () => {
   movies.value = null;
   if (checkedGenres.value.length !== 0 || checkedYears.value.length !== 0) {
-    const response = await httpClient.get(`/api/public/filter?genre=${checkedGenres.value.join()}&year=${checkedYears.value.join()}`);
+    const response = await httpClient.get(`/api/public/filter?genre=${getGenreIds()}&year=${checkedYears.value.join()}`);
     movies.value = response.data;
   } else {
     getMovies();
