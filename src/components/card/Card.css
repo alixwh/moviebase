@@ -47,10 +47,10 @@
     padding: 10px;
     font-size: 14px;
     position: absolute;
-    top: 10%;
+    top: 35%;
+    transform: translateY(-50%);
     opacity: 0;
     transition: 1s all ease-in-out;
-    align-self: center;
 }
 
 .card:hover .movie-list-item-overview {
