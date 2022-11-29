@@ -1,47 +1,27 @@
-.main-movie-container {
+.actor-container {
   min-height: 40vh;
   margin: 8vh 10vh;
   display: flex;
   align-items: center;
 }
 
-.movie-img {
+.actor-img {
   width: 320px;
   height: 432px;
   border-radius: 15px;
 }
 
-.movie-info {
+.actor-info {
   margin-left: 50px;
 }
 
-.genres {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    gap: 10px;
-}
-
-.genres li {
-    text-decoration: underline;
-}
-
-.directors-list {
-  list-style: none;
-  padding: 0;
-}
-
-.star-icon {
-  padding-right: 10px;
-}
-
-.actors-container {
+.movies-container {
   min-height: 40vh;
-  margin: 8vh 10vh;
+  margin: 9vh 10vh;
   align-items: center;
 }
 
-.actors-list {
+.movies-list {
   list-style: none;
   padding: 0 20px;
   display: grid;
@@ -50,7 +30,8 @@
 
 }
 
-.actors-list-item {
+.movies-list-item {
   margin-bottom: 30px;
   margin-right: 30px;
+  position: relative;
 }
