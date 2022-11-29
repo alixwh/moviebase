@@ -63,8 +63,6 @@ watch(() => route.params.id, () => {
   row-gap: 20px;
   margin-top: 40px;
   padding: 0 20px;
-  transform: translateX(0);
-  transition: 1s ease-in-out;
 }
 
 .movie-list-item {

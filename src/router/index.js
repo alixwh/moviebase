@@ -7,6 +7,7 @@ import HomeView from '../views/HomeView.vue';
 import GenreView from '../views/GenreView.vue';
 import MoviesView from '../views/MoviesView.vue';
 import MovieView from '../views/MovieView.vue';
+import SearchView from '../views/SearchView.vue';
 
 const routes = [
   {
@@ -28,6 +29,12 @@ const routes = [
     path: '/movie/:id',
     name: 'movie',
     component: MovieView,
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: SearchView,
+    props: (route) => ({ query: route.query.query }),
   },
   {
     path: '/account',
