@@ -67,7 +67,6 @@ watch(() => route.params.id, () => {
 
 .movie-list-item {
   margin-right: 30px;
-  position: relative;
 }
 
 .genre-name {

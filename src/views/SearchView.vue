@@ -119,7 +119,6 @@ watch(() => route.params.id, () => getMovies());
 
 .movie-list-item {
   margin-right: 30px;
-  position: relative;
 }
 
 .search-result {
