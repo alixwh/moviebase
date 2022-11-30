@@ -1,12 +1,12 @@
 <template>
   <div class="main-movie-container">
     <img
-      class="movie-list-item-img"
-      name="movie-list-item-img"
+      class="movie-img"
+      name="movie-img"
       :src="`https://image.tmdb.org/t/p/w500${movie.posterPath}`"
     >
     <div class="movie-info">
-      <h1 class="movie-list-item-title">
+      <h1 class="movie-title">
         {{ movie.title }}
       </h1>
       <span>{{ movie.releaseDate }}</span>
@@ -24,7 +24,7 @@
       />
       <span>{{ movie.voteAverage }} / 10</span>
       <h3>Overview</h3>
-      <p class="movie-list-item-overview">
+      <p class="movie-overview">
         {{ movie.overview }}
       </p>
       <h3>Director</h3>
