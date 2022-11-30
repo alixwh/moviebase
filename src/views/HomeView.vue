@@ -8,7 +8,6 @@
       <div class="search-container">
         <form
           action="/search"
-          method="get"
           class="search-bar"
         >
           <input
