@@ -139,20 +139,19 @@ const getMoviesQuery = () => {
   request.push(`page=${currentPage.value - 1}&orderBy=${sortingChoice.value.value}&ascending=${sortingChoice.value.ascending}`);
   return request.join('&');
 };
-const saveMovies = (data) => {
-  movies.value = data.content;
-  totalPages.value = data.totalPages;
+const saveMovies = async () => {
+  const response = await httpClient.get(`/api/public/filter?${getMoviesQuery()}`);
+  movies.value = response.data.content;
+  totalPages.value = response.data.totalPages;
 };
 
 const getMovies = async () => {
-  const response = await httpClient.get(`/api/public/filter?${getMoviesQuery()}`);
-  saveMovies(response.data);
+  saveMovies();
 };
 
 const handleFilterSubmit = async () => {
   currentPage.value = 1;
-  const response = await httpClient.get(`/api/public/filter?${getMoviesQuery()}`);
-  saveMovies(response.data);
+  saveMovies();
 };
 
 const handlePageChange = (number) => {
