@@ -3,7 +3,6 @@
     <div class="search-container">
       <form
         action="/search"
-        method="get"
         class="search-bar"
       >
         <input
@@ -36,14 +35,12 @@
 </template>
 <script setup>
 import Card from '@/components/card/Card.vue';
-import { ref, onMounted, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, onMounted } from 'vue';
 import httpClient from '@/httpClient';
 
 const props = defineProps({
   query: { type: String, required: true },
 });
-const route = useRoute();
 const movies = ref([]);
 const getMovies = async () => {
   try {
@@ -55,8 +52,6 @@ const getMovies = async () => {
   }
 };
 onMounted(() => getMovies());
-
-watch(() => route.params.id, () => getMovies());
 </script>
 
 <style>
