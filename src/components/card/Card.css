@@ -1,13 +1,12 @@
 .card {
-    display: flex;
-    flex-direction: column;
     padding: 8px;
     align-items: flex-start;
     max-width: 200px;
-    gap: 8px;
+    position: relative;
 }
 
 .genres {
+    margin-top: 7px;
     list-style: none;
     padding: 0;
     width: 200px;
@@ -32,11 +31,12 @@
 
 .card:hover .movie-list-item-img {
     transform: scale(1.2);
-    margin: 0 30px;
     opacity: 0.35;
 }
 
 .movie-list-item-title {
+    margin-top: 5px;
+    margin-bottom: 7px;
     font-size: 20px;
     font-weight: bold;
     top: 10%;
@@ -47,10 +47,10 @@
     padding: 10px;
     font-size: 14px;
     position: absolute;
-    top: 10%;
+    top: 35%;
+    transform: translateY(-50%);
     opacity: 0;
     transition: 1s all ease-in-out;
-    align-self: center;
 }
 
 .card:hover .movie-list-item-overview {
