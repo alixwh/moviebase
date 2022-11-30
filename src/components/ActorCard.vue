@@ -1,19 +1,22 @@
 <template>
-  <div class="actor">
-    <img
-      v-if="actor.profilePath"
-      class="actor-img"
-      name="actor-img"
-      :src="`https://image.tmdb.org/t/p/w500${actor.profilePath}`"
-    >
-    <img
-      v-else
-      class="actor-img"
-      name="actor-img"
-      src="../assets/default_profile_pic.jpg"
-    >
-    <span class="actor-name">{{ actor.name }}</span>
-  </div>
+  <router-link :to="`/actor/${actor.id}`">
+    <div class="actor">
+      <img
+        v-if="actor.profilePath"
+        class="actor-img"
+        name="actor-img"
+        :src="`https://image.tmdb.org/t/p/w500${actor.profilePath}`"
+      >
+      <img
+        v-else
+        class="actor-img"
+        name="actor-img"
+        src="../assets/default_profile_pic.jpg"
+      >
+      <span class="actor-name">{{ actor.name }}</span>
+    </div>
+  </router-link>
+  <router-view />
 </template>
 
 <script setup>
@@ -21,7 +24,7 @@ import { ref, onMounted } from 'vue';
 import httpClient from '@/httpClient';
 
 const props = defineProps({
-  actorId: { type: Object, required: true },
+  actorId: { type: Number, required: true },
 });
 const actor = ref({});
 const getActor = async () => {
@@ -32,9 +35,7 @@ const getActor = async () => {
     console.log(e);
   }
 };
-onMounted(() => {
-  getActor();
-});
+onMounted(() => getActor());
 </script>
 
 <style>
