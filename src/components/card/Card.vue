@@ -7,6 +7,7 @@
     >
     <span class="movie-list-item-title">{{ props.movie.title }}</span>
     <span>{{ props.movie.releaseDate }}</span>
+    <span>{{ props.movie.voteAverage }}</span>
     <span class="movie-list-item-overview">{{ props.movie.overview }}</span>
     <ul
       v-if="props.movie.genresList.length"

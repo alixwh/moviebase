@@ -53,7 +53,7 @@
       </li>
       <li class="filter">
         <button class="dropbtn">
-          Sort by: {{ sortingChoice }}
+          Sort by: {{ sortingChoice.name }}
         </button>
         <div class="grid-container">
           <div
@@ -62,28 +62,33 @@
             class="grid-item"
           >
             <input
-              :id="sort"
+              :id="sort.name"
               v-model="sortingChoice"
               type="radio"
               :value="sort"
             >
             <label
-              :for="sort"
+              :for="sort.name"
             >
-              {{ sort }}</label>
+              {{ sort.name }}</label>
           </div>
         </div>
       </li>
       <li class="filter">
         <button
           class="filter-btn"
-          @click="handleFilter"
+          @click="handleFilterSubmit"
         >
           Filter
         </button>
       </li>
     </div>
   </div>
+  <Pagination
+    :number-of-pages="totalPages"
+    :current-page="currentPage"
+    @page-changed="handlePageChange"
+  />
   <div>
     <ul class="movie-list">
       <li
@@ -99,8 +104,18 @@
 
 <script setup>
 import Card from '@/components/card/Card.vue';
+import Pagination from '@/components/pagination/Pagination.vue';
 import httpClient from '@/httpClient';
 import { onMounted, ref } from 'vue';
+
+const movies = ref([]);
+const currentPage = ref(1);
+const totalPages = ref(1);
+
+const checkedGenres = ref([]);
+const checkedYears = ref([]);
+const sortingOptions = [{ name: 'title', value: 'title', ascending: true }, { name: 'rating', value: 'vote_average', ascending: false }, { name: 'date', value: 'release_date', ascending: false }];
+const sortingChoice = ref(sortingOptions.at(1));
 
 const genres = ref([]);
 const getGenres = async () => {
@@ -112,31 +127,39 @@ const getGenres = async () => {
   }
 };
 
-const movies = ref([]);
-const getMovies = async () => {
-  try {
-    const response = await httpClient.get('/api/public/movies');
-    movies.value = response.data;
-  } catch (e) {
-    // console.log(e);
-  }
-};
-
-const checkedGenres = ref([]);
-const checkedYears = ref([]);
-const sortingOptions = ['default', 'title', 'voteAverage', 'releaseDate']; // not working yet
-const sortingChoice = ref('default');
-
 const getGenreIds = () => (checkedGenres.value.map((genre) => genre.id).join());
-const handleFilter = async () => {
-  movies.value = null;
-  if (checkedGenres.value.length !== 0 || checkedYears.value.length !== 0) {
-    const response = await httpClient.get(`/api/public/filter?genre=${getGenreIds()}&year=${checkedYears.value.join()}`);
-    movies.value = response.data;
-  } else {
-    getMovies();
+const getMoviesQuery = () => {
+  const request = [];
+  if (getGenreIds()) {
+    request.push(`genre=${getGenreIds()}`);
   }
+  if (checkedYears.value.join()) {
+    request.push(`year=${checkedYears.value.join()}`);
+  }
+  request.push(`page=${currentPage.value - 1}&orderBy=${sortingChoice.value.value}&ascending=${sortingChoice.value.ascending}`);
+  return request.join('&');
 };
+const saveMovies = (data) => {
+  movies.value = data.content;
+  totalPages.value = data.totalPages;
+};
+
+const getMovies = async () => {
+  const response = await httpClient.get(`/api/public/filter?${getMoviesQuery()}`);
+  saveMovies(response.data);
+};
+
+const handleFilterSubmit = async () => {
+  currentPage.value = 1;
+  const response = await httpClient.get(`/api/public/filter?${getMoviesQuery()}`);
+  saveMovies(response.data);
+};
+
+const handlePageChange = (number) => {
+  currentPage.value = number;
+  getMovies();
+};
+
 onMounted(() => {
   getMovies();
   getGenres();
