@@ -1,0 +1,37 @@
+.actor-container {
+  min-height: 40vh;
+  margin: 8vh 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.actor-img {
+  width: 320px;
+  height: 432px;
+  border-radius: 15px;
+}
+
+.actor-info {
+  margin-left: 50px;
+}
+
+.movies-container {
+  min-height: 40vh;
+  margin: 9vh 10vh;
+  align-items: center;
+}
+
+.movies-list {
+  list-style: none;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(247px, 1fr));
+  row-gap: 20px;
+
+}
+
+.movies-list-item {
+  margin-bottom: 30px;
+  margin-right: 30px;
+  position: relative;
+}
