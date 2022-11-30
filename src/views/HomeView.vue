@@ -64,7 +64,7 @@ const movies = ref([]);
 const getMovies = async () => {
   try {
     const response = await httpClient.get('/api/public/movies');
-    movies.value = response.data;
+    movies.value = response.data.content;
   } catch (e) {
     // console.log(e);
   }

@@ -1,0 +1,15 @@
+.page {
+    display: flex;
+    list-style: none;
+    margin-top: 15px;
+    border-radius: .25rem;
+    box-sizing: border-box;
+}
+.page li {
+    padding: 10px;
+    display: inline-block;
+    border-radius: 30%;
+}
+.selected {
+    background-color: green;
+}
