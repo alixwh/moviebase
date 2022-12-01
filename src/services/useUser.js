@@ -6,6 +6,15 @@ const useUser = () => {
   const userStore = useAuthStore();
   const router = useRouter();
 
+  const getAccountDetails = async () => {
+    if (!localStorage.getItem('accountId')) {
+      const response = await httpClient.get('api/account');
+      const { data } = response;
+      localStorage.setItem('accountId', data.id);
+      localStorage.setItem('username', data.username);
+    }
+  };
+
   const login = async (username, password) => {
     const request = {
       username,
@@ -15,9 +24,11 @@ const useUser = () => {
       .then((response) => {
         if (!response.data.token) return;
         userStore.setCredentials(response.data.token);
-        router.push('/');
         // TODO lisada axioses tulevikus authorization: bearer response.token
-        // axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+        // eslint-disable-next-line dot-notation
+        httpClient.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+        getAccountDetails();
+        router.push('/');
       });
     // .catch((error) => console.log('login', error));
   };
@@ -35,12 +46,18 @@ const useUser = () => {
   };
   const logout = () => {
     userStore.clearCredentials();
+    router.push('/');
   };
 
+  const deleteAccount = (id) => {
+    httpClient.delete(`api/delete/${id.value}`);
+    logout();
+  };
   return {
     login,
     logout,
     register,
+    deleteAccount,
   };
 };
 

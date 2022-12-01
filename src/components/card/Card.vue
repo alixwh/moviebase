@@ -25,14 +25,29 @@
         </li>
       </ul>
     </router-link>
+    <router-view />
+    <button @click="addToWatchlist(props.movie.id)">
+      add to watchlist
+    </button>
   </div>
-  <router-view />
 </template>
 
 <script setup>
+import httpClient from '@/httpClient';
+
 const props = defineProps({
   movie: { type: Object, required: true },
 });
+const addToWatchlist = async (id) => {
+  const response = await httpClient.get('api/account');
+  const accountId = response.data.id;
+  const request = {
+    accountId,
+    movieId: id,
+    state: 'watching',
+  };
+  httpClient.post('api/account/movielist/add', request);
+};
 </script>
 
 <style src="./Card.css" scoped>

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import {
-  Layout, Login, Register,
+  Layout, Login, Register, AccountView,
 } from '@/views/account';
 import AboutView from '@/views/AboutView.vue';
 import HomeView from '../views/HomeView.vue';
@@ -49,6 +49,7 @@ const routes = [
       { path: '', redirect: 'login' },
       { path: '/login', name: 'login', component: Login },
       { path: '/register', name: 'register', component: Register },
+      { path: '/accountView', name: 'accountview', component: AccountView },
 
     ],
   },

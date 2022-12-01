@@ -9,6 +9,7 @@
     padding: 10px;
     display: inline-block;
     border-radius: 30%;
+    cursor: pointer;
 }
 .selected {
     background-color: green;

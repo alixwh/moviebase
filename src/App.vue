@@ -37,36 +37,48 @@
           </router-link>
         </ul>
       </div>
-      <div class="profile-container">
-        <div
+      <div>
+        <ul
           v-if="user.token"
-          class="profile-text"
-          @click="logout"
+          class="profile-container"
         >
-          Logout
-        </div>
-        <router-link
-          v-else
-          to="/login"
-          class="profile-text"
-        >
-          Login
-        </router-link>
-        <div class="toggle">
-          <font-awesome-icon
-            icon="fa-solid fa-moon"
-            class="toggle-icons"
-          />
-          <font-awesome-icon
-            icon="fa-solid fa-sun"
-            class="toggle-icons"
-          />
-          <div class="toggle-ball" />
-        </div>
+          <div
+            class="profile-item"
+            @click="logout"
+          >
+            <a class="profile-text">Logout</a>
+          </div>
+          <router-link
+            to="/accountview"
+            class="profile-item"
+          >
+            <a class="profile-text">Account</a>
+          </router-link>
+        </ul>
+        <ul v-else>
+          <router-link
+            key="login"
+            to="/login"
+            class="profile-text"
+          >
+            <a>Login</a>
+          </router-link>
+        </ul>
+      </div>
+      <div class="toggle">
+        <font-awesome-icon
+          icon="fa-solid fa-moon"
+          class="toggle-icons"
+        />
+        <font-awesome-icon
+          icon="fa-solid fa-sun"
+          class="toggle-icons"
+        />
+        <div class="toggle-ball" />
       </div>
     </div>
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <script setup>
