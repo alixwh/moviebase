@@ -27,13 +27,10 @@
       </p>
       <div>
         <ul class="action">
-          <li id="">
-            <span>Your rating</span>
-          </li>
           <li>
-            Move to:
             <select
               v-model="selected"
+              class="select-movielist"
               @change="onchage"
             >
               <option
@@ -45,7 +42,9 @@
             </select>
           </li>
           <li>
-            <button>Remove from watchlist</button>
+            <button class="remove-button">
+              Remove from watchlist
+            </button>
           </li>
         </ul>
       </div>

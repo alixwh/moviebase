@@ -11,5 +11,6 @@
     align-self: center;
     box-shadow: 0 2px 8px white;
     border-radius: 10px;
-    max-width: 70%;
+    width: 70%;
 }
+

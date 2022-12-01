@@ -49,7 +49,7 @@
             <a class="profile-text">Logout</a>
           </div>
           <router-link
-            to="/accountview"
+            to="/accountView"
             class="profile-item"
           >
             <a class="profile-text">Account</a>
