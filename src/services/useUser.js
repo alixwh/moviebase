@@ -46,7 +46,7 @@ const useUser = () => {
   };
   const logout = () => {
     userStore.clearCredentials();
-    router.push('/');
+    router.go('/');
     httpClient.defaults.headers.common['Authorization'] = null;
   };
 

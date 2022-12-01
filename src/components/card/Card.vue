@@ -26,9 +26,13 @@
       </ul>
     </router-link>
     <router-view />
-    <button @click="addToWatchlist(props.movie.id)">
-      add to watchlist
-    </button>
+    <div v-if="user">
+      <button
+        @click="addToWantToWatch(props.movie.id)"
+      >
+        want to watch
+      </button>
+    </div>
   </div>
 </template>
 
@@ -38,13 +42,14 @@ import httpClient from '@/httpClient';
 const props = defineProps({
   movie: { type: Object, required: true },
 });
-const addToWatchlist = async (id) => {
+const user = localStorage.getItem('username');
+const addToWantToWatch = async (id) => {
   const response = await httpClient.get('api/account');
   const accountId = response.data.id;
   const request = {
     accountId,
     movieId: id,
-    state: 'watching',
+    state: 'wantToWatch',
   };
   httpClient.post('api/account/movielist/add', request);
 };
