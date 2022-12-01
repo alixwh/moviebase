@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import httpClient from '@/httpClient';
 import useAuthStore from '@/stores/auth';
 import { useRouter } from 'vue-router';
@@ -25,7 +26,6 @@ const useUser = () => {
         if (!response.data.token) return;
         userStore.setCredentials(response.data.token);
         // TODO lisada axioses tulevikus authorization: bearer response.token
-        // eslint-disable-next-line dot-notation
         httpClient.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
         getAccountDetails();
         router.push('/');
@@ -47,10 +47,11 @@ const useUser = () => {
   const logout = () => {
     userStore.clearCredentials();
     router.push('/');
+    httpClient.defaults.headers.common['Authorization'] = null;
   };
 
   const deleteAccount = (id) => {
-    httpClient.delete(`api/delete/${id.value}`);
+    httpClient.delete(`api/account/delete/${id}`);
     logout();
   };
   return {

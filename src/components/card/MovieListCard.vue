@@ -42,8 +42,11 @@
             </select>
           </li>
           <li>
-            <button class="remove-button">
-              Remove from watchlist
+            <button
+              class="remove-button"
+              @click="delteFromList"
+            >
+              Remove from list
             </button>
           </li>
         </ul>
@@ -72,6 +75,9 @@ const onchage = () => {
     state: selected.value,
   };
   httpClient.put('/api/account/movielist/change', request);
+};
+const delteFromList = () => {
+  httpClient.delete(`api/account/movie/delete/${props.movie.id}`);
 };
 
 </script>
