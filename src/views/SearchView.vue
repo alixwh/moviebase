@@ -28,13 +28,13 @@
         :key="movie.title"
         class="movie-list-item"
       >
-        <Card :movie="movie" />
+        <MovieCard :movie="movie" />
       </li>
     </ul>
   </div>
 </template>
 <script setup>
-import Card from '@/components/card/Card.vue';
+import MovieCard from '@/components/card/MovieCard.vue';
 import { ref, onMounted } from 'vue';
 import httpClient from '@/httpClient';
 

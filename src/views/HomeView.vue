@@ -40,7 +40,7 @@
               v-for="movie in movies"
               :key="movie.title"
             >
-              <Card :movie="movie" />
+              <MovieCard :movie="movie" />
             </li>
           </ul>
           <font-awesome-icon
@@ -56,7 +56,7 @@
 
 <script setup>
 // @ is an alias to /src
-import Card from '@/components/card/Card.vue';
+import MovieCard from '@/components/card/MovieCard.vue';
 import httpClient from '@/httpClient';
 import { onMounted, ref } from 'vue';
 

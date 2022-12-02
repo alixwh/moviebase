@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import ActorCard from '@/components/ActorCard.vue';
+import ActorCard from '@/components/card/ActorCard.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import httpClient from '@/httpClient';
