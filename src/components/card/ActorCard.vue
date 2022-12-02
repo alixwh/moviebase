@@ -11,7 +11,7 @@
         v-else
         class="actor-img"
         name="actor-img"
-        src="../assets/default_profile_pic.jpg"
+        src="../../assets/default_profile_pic.jpg"
       >
       <span class="actor-name">{{ actor.name }}</span>
     </div>
