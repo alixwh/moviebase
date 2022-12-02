@@ -83,17 +83,24 @@
 }
 
 .profile-container {
-  flex: 2;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  width: min-content;
+}
+.profile-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: min-content;
 }
 
 .profile-text {
   margin: 0 20px;
+  cursor: pointer;
 }
 
-.profile-container:hover {
+.profile-item:hover {
   color: #2b9f5f;
 }
 

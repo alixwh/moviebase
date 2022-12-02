@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import httpClient from '@/httpClient';
 import useAuthStore from '@/stores/auth';
 import { useRouter } from 'vue-router';
@@ -5,6 +6,15 @@ import { useRouter } from 'vue-router';
 const useUser = () => {
   const userStore = useAuthStore();
   const router = useRouter();
+
+  const getAccountDetails = async () => {
+    if (!localStorage.getItem('accountId')) {
+      const response = await httpClient.get('api/account');
+      const { data } = response;
+      localStorage.setItem('accountId', data.id);
+      localStorage.setItem('username', data.username);
+    }
+  };
 
   const login = async (username, password) => {
     const request = {
@@ -15,9 +25,10 @@ const useUser = () => {
       .then((response) => {
         if (!response.data.token) return;
         userStore.setCredentials(response.data.token);
-        router.push('/');
         // TODO lisada axioses tulevikus authorization: bearer response.token
-        // axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+        httpClient.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+        getAccountDetails();
+        router.push('/');
       });
     // .catch((error) => console.log('login', error));
   };
@@ -35,12 +46,19 @@ const useUser = () => {
   };
   const logout = () => {
     userStore.clearCredentials();
+    router.go('/');
+    httpClient.defaults.headers.common['Authorization'] = null;
   };
 
+  const deleteAccount = (id) => {
+    httpClient.delete(`api/account/delete/${id}`);
+    logout();
+  };
   return {
     login,
     logout,
     register,
+    deleteAccount,
   };
 };
 
