@@ -46,7 +46,6 @@ const getMovies = async () => {
   try {
     const response = await httpClient.get(`/api/public/search?query=${props.query}`);
     movies.value = response.data;
-    console.log(response.data);
   } catch (e) {
     // console.log(e);
   }

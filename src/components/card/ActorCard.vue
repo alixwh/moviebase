@@ -32,7 +32,7 @@ const getActor = async () => {
     const response = await httpClient.get(`/api/public/actors/${props.actorId}`);
     actor.value = response.data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 onMounted(() => getActor());

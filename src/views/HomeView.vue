@@ -66,7 +66,7 @@ const getMovies = async () => {
     const response = await httpClient.get('/api/public/movies');
     movies.value = response.data.content;
   } catch (e) {
-    // console.log(e);
+    console.log(e);
   }
 };
 onMounted(() => getMovies());
@@ -79,6 +79,26 @@ export default {
     },
   },
 };
+
+const arrows = document.querySelectorAll('.arrow');
+const movieLists = document.querySelectorAll('.home ul');
+arrows.forEach((arrow, i) => {
+  const numberOfMoviesOnPage = 6;
+  let clickCounter = 0;
+  arrow.addEventListener('click', () => {
+    const ratio = Math.floor(window.innerWidth / 270);
+    // eslint-disable-next-line no-plusplus
+    clickCounter++;
+    if (21 - (numberOfMoviesOnPage * clickCounter) + (numberOfMoviesOnPage - ratio) >= 0) {
+      movieLists[i].style.transform = `translateX(${
+        movieLists[i].computedStyleMap().get('transform')[0].x.value - 1230
+      }px)`;
+    } else {
+      movieLists[i].style.transform = 'translateX(0)';
+      clickCounter = 0;
+    }
+  });
+});
 </script>
 
 <style src="./HomeView.css" scoped />

@@ -65,7 +65,7 @@ const getMovie = async () => {
     const response = await httpClient.get(`/api/public/movies/${route.params.id}`);
     movie.value = response.data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 onMounted(() => getMovie());
