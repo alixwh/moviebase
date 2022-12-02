@@ -6,22 +6,23 @@
         src="../assets/movie_collage.jpg"
       >
       <div class="search-container">
-        <form
-          action="/search"
-          class="search-bar"
-        >
+        <div class="search-bar">
           <input
+            v-model="inputValue"
             type="text"
             placeholder="Search"
             name="query"
           >
-          <button type="submit">
+          <button
+            class="submit"
+            @click="redirect(inputValue)"
+          >
             <font-awesome-icon
               icon="fa-solid fa-magnifying-glass"
               class="magnifying-glass"
             />
           </button>
-        </form>
+        </div>
       </div>
       <div class="quiz-container">
         <h1>Don't know what to watch?</h1>
@@ -69,6 +70,15 @@ const getMovies = async () => {
   }
 };
 onMounted(() => getMovies());
+</script>
+<script>
+export default {
+  methods: {
+    redirect(inputValue) {
+      this.$router.push({ path: '/search', query: { query: inputValue } });
+    },
+  },
+};
 </script>
 
 <style src="./HomeView.css" scoped />
