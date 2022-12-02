@@ -36,7 +36,7 @@ npm run lint
 ```
 docker build -t ${tag_name} .
 ```
-##Server
+## Server
 In the directory where the docker-compose.yml is run the command
 ```
 docker-compose up
