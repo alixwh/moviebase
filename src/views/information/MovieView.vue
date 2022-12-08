@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import ActorCard from '@/components/ActorCard.vue';
+import ActorCard from '@/components/card/ActorCard.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import httpClient from '@/httpClient';
@@ -65,7 +65,7 @@ const getMovie = async () => {
     const response = await httpClient.get(`/api/public/movies/${route.params.id}`);
     movie.value = response.data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 onMounted(() => getMovie());

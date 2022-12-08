@@ -55,6 +55,6 @@ const addToWantToWatch = async (id) => {
 };
 </script>
 
-<style src="./Card.css" scoped>
+<style src="./MovieCard.css" scoped>
 
 </style>

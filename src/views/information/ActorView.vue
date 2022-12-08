@@ -10,7 +10,7 @@
       v-else
       class="actor-img"
       name="actor-img"
-      src="../assets/default_profile_pic.jpg"
+      src="../../assets/default_profile_pic.jpg"
     >
     <div class="actor-info">
       <h1 class="actor-name">
@@ -26,14 +26,14 @@
         :key="movie.title"
         class="movies-list-item"
       >
-        <Card :movie="movie" />
+        <MovieCard :movie="movie" />
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-import Card from '@/components/card/Card.vue';
+import MovieCard from '@/components/card/MovieCard.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import httpClient from '@/httpClient';
@@ -50,11 +50,11 @@ const getActorInfo = async () => {
         const response2 = await httpClient.get(`/api/public/movies/${movieId}`);
         movies.value.push(response2.data);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     });
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 onMounted(() => getActorInfo());

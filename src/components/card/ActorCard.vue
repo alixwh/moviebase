@@ -11,7 +11,7 @@
         v-else
         class="actor-img"
         name="actor-img"
-        src="../assets/default_profile_pic.jpg"
+        src="../../assets/default_profile_pic.jpg"
       >
       <span class="actor-name">{{ actor.name }}</span>
     </div>
@@ -32,7 +32,7 @@ const getActor = async () => {
     const response = await httpClient.get(`/api/public/actors/${props.actorId}`);
     actor.value = response.data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
 };
 onMounted(() => getActor());

@@ -1,14 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import {
   Layout, Login, Register, AccountView,
 } from '@/views/account';
 import AboutView from '@/views/AboutView.vue';
 import HomeView from '../views/HomeView.vue';
-import GenreView from '../views/GenreView.vue';
-import MoviesView from '../views/MoviesView.vue';
-import MovieView from '../views/MovieView.vue';
-import ActorView from '../views/ActorView.vue';
-import SearchView from '../views/SearchView.vue';
+import GenreView from '../views/movielist/GenreView.vue';
+import MoviesView from '../views/movielist/MoviesView.vue';
+import MovieView from '../views/information/MovieView.vue';
+import ActorView from '../views/information/ActorView.vue';
+import SearchView from '../views/movielist/SearchView.vue';
 
 const routes = [
   {
@@ -61,7 +61,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes,
 });
 
