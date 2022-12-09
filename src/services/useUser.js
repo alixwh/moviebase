@@ -25,11 +25,10 @@ const useUser = () => {
       .then((response) => {
         if (!response.data.token) return;
         userStore.setCredentials(response.data.token);
-        // TODO lisada axioses tulevikus authorization: bearer response.token
         httpClient.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
         getAccountDetails();
         router.push('/');
-      });
+      }).catch((error) => alert(error.response.data.message));
     // .catch((error) => console.log('login', error));
   };
   const register = (username, password) => {
@@ -41,8 +40,7 @@ const useUser = () => {
       .then((response) => {
         if (response.data.reason !== 'register successful');
         login(username, password);
-      });
-    // .catch((error) => console.log('regsiter', error));
+      }).catch((error) => alert(error.response.data.message));
   };
   const logout = () => {
     userStore.clearCredentials();
