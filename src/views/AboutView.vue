@@ -1,5 +1,5 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Tiimiliikmed: Brigite Kerge ja Häli Hinno</h1>
   </div>
 </template>
