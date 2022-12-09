@@ -29,7 +29,6 @@ const useUser = () => {
         getAccountDetails();
         router.push('/');
       }).catch((error) => alert(error.response.data.message));
-    // .catch((error) => console.log('login', error));
   };
   const register = (username, password) => {
     const request = {
